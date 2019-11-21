@@ -2,10 +2,10 @@ package edu.uoc.elearn.lti.provider.controller;
 
 import edu.uoc.elc.lti.platform.Member;
 import edu.uoc.elc.lti.platform.ags.LineItem;
+import edu.uoc.elc.spring.security.lti.ags.AgsClient;
+import edu.uoc.elc.spring.security.lti.tool.ToolProvider;
 import edu.uoc.elearn.lti.provider.security.UOCContext;
 import edu.uoc.elearn.lti.provider.security.UOCUser;
-import edu.uoc.elearn.spring.security.lti.tool.ToolProvider;
-import edu.uoc.elearn.spring.security.lti.ags.AgsClient;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;

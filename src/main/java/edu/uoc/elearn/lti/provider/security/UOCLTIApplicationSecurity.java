@@ -1,12 +1,12 @@
 package edu.uoc.elearn.lti.provider.security;
 
-import edu.uoc.elearn.spring.security.lti.LTIApplicationSecurity;
-import edu.uoc.elearn.spring.security.lti.LTIProcessingFilter;
+import edu.uoc.elc.spring.security.lti.LTIApplicationSecurity;
+import edu.uoc.elc.spring.security.lti.LTIProcessingFilter;
+import edu.uoc.elc.spring.security.lti.tool.ToolDefinition;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +14,10 @@ import java.util.List;
 @Configuration
 @Order(90)
 public class UOCLTIApplicationSecurity extends LTIApplicationSecurity {
+
+	public UOCLTIApplicationSecurity(ToolDefinition toolDefinition) {
+		super(toolDefinition);
+	}
 
 	@Bean
 	@ConfigurationProperties(prefix = "uoc.lti.admin.users")

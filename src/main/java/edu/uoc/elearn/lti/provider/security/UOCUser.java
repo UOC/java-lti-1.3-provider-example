@@ -1,6 +1,6 @@
 package edu.uoc.elearn.lti.provider.security;
 
-import edu.uoc.elearn.spring.security.lti.User;
+import edu.uoc.elc.spring.security.lti.User;
 import lombok.extern.slf4j.Slf4j;
 
 /**

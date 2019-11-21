@@ -1,7 +1,7 @@
 package edu.uoc.elearn.lti.provider.security;
 
-import edu.uoc.elearn.spring.security.lti.LTIAuthenticationDetailsSource;
-import edu.uoc.elearn.spring.security.lti.tool.ToolDefinition;
+import edu.uoc.elc.spring.security.lti.LTIAuthenticationDetailsSource;
+import edu.uoc.elc.spring.security.lti.tool.ToolDefinition;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import javax.servlet.http.HttpServletRequest;

@@ -1,8 +1,7 @@
 package edu.uoc.elearn.lti.provider.security;
 
 import edu.uoc.elc.lti.tool.Tool;
-import edu.uoc.elearn.spring.security.lti.Context;
-import lombok.AllArgsConstructor;
+import edu.uoc.elc.spring.security.lti.Context;
 import lombok.extern.slf4j.Slf4j;
 
 /**
