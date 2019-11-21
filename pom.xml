@@ -101,6 +101,11 @@
             <artifactId>lti-1.3</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>edu.uoc.elc.lti</groupId>
+            <artifactId>spring-boot-lti-advantage</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
 
     </dependencies>
 
