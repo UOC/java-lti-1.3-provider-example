@@ -1,0 +1,7 @@
+lti:
+  key-set-url: https://lti-ri.imsglobal.org/platforms/68/platform_keys/60.json
+  access-token-url: https://lti-ri.imsglobal.org/platforms/68/access_tokens
+  oidc-auth-url: https://lti-ri.imsglobal.org/platforms/68/authorizations/new
+  platform: https://www.uoc.edu
+  client-id: Universitat Oberta de Catalunya
+
