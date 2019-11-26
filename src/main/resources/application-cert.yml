@@ -1,8 +1,7 @@
 lti:
-  key-set-url: "https://oauth2server.imsglobal.org/jwks"
-  access-token-url: "https://ltiadvantagevalidator.imsglobal.org/ltitool/authcodejwt.html"
-  oidc-auth-url: "https://ltiadvantagevalidator.imsglobal.org/ltitool/oidcauthurl.html"
-  platform: "https://ltiadvantagevalidator.imsglobal.org"
-  client-id: "imstester_3dfad6d"
-
-## deploymentId = testdeploy
+  key-set-url: https://oauth2server.imsglobal.org/jwks
+  access-token-url: https://ltiadvantagevalidator.imsglobal.org/ltitool/authcodejwt.html
+  oidc-auth-url: https://ltiadvantagevalidator.imsglobal.org/ltitool/oidcauthurl.html
+  platform: https://ltiadvantagevalidator.imsglobal.org
+  client-id: imstester_3dfad6d
+  deployment-id: testdeploy
