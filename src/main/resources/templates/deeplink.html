@@ -1,6 +1,42 @@
 <!DOCTYPE html>
 <html data-layout-decorate="~{layout}">
-<div data-layout-fragment="content" data-th-object="${object}">
-    <h1>TODO!!!</h1>
+<div data-layout-fragment="content">
+    <h1>Create Deep Link Item/s</h1>
+    <form data-th-action="@{/deeplink/new}" method="post" data-th-object="${object.deepLink}">
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" id="title" data-th-field="*{title}" placeholder="title" class="form-item">
+        </div>
+        <div class="form-group">
+            <label for="text">Text</label>
+            <input type="text" id="text" data-th-field="*{text}" placeholder="text" class="form-item">
+        </div>
+        <div class="form-group">
+            <label for="url">URL</label>
+            <input type="text" id="url" data-th-field="*{url}" placeholder="url" class="form-item">
+        </div>
+        <div class="form-group">
+            <label for="type">Type</label>
+            <select id="type" data-th-field="*{type}" class="form-item">
+                <option value="">-</option>
+                <option data-th-each="type : ${object.settings.accept_types}" data-th-value="${type}" data-th-text="${type}"></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="documentTarget">Document Target</label>
+            <select id="documentTarget" data-th-field="*{documentTarget}" class="form-item">
+                <option value="">-</option>
+                <option data-th-each="target : ${object.settings.accept_presentation_document_targets}" data-th-value="${target}" data-th-text="${target}"></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="mediaType">Media Type</label>
+            <select id="mediaType" data-th-field="*{mediaType}" class="form-item">
+                <option value="">-</option>
+                <option data-th-each="type : ${object.settings.accept_media_types}" data-th-value="${type}" data-th-text="${type}"></option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn--primary">Enviar</button>
+    </form>
 </div>
 </html>

@@ -11,4 +11,5 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class DeepLinkBean {
 	private final Settings settings;
+	private final DeepLinkForm deepLink;
 }

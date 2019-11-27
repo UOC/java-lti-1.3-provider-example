@@ -3,6 +3,7 @@ package edu.uoc.elearn.lti.provider.controller;
 import edu.uoc.elc.lti.tool.deeplinking.Settings;
 import edu.uoc.elc.spring.security.lti.tool.ToolProvider;
 import edu.uoc.elearn.lti.provider.beans.DeepLinkBean;
+import edu.uoc.elearn.lti.provider.beans.DeepLinkForm;
 import edu.uoc.elearn.lti.provider.security.UOCContext;
 import edu.uoc.elearn.lti.provider.security.UOCUser;
 import lombok.extern.slf4j.Slf4j;
@@ -20,6 +21,10 @@ import org.springframework.web.servlet.ModelAndView;
 @Slf4j
 @PreAuthorize("isAuthenticated()")
 public class DeepLinkController {
+	public DeepLinkForm setDeepLinkForm() {
+		return new DeepLinkForm();
+	}
+
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView init(UOCUser user, UOCContext context, ToolProvider toolProvider) {
 		final DeepLinkBean deepLinkBean = prepateFormWithLaunch(toolProvider);
@@ -28,6 +33,9 @@ public class DeepLinkController {
 
 	private DeepLinkBean prepateFormWithLaunch(ToolProvider toolProvider) {
 		final Settings settings = toolProvider.getDeepLinkingSettings();
-		return new DeepLinkBean(settings);
+		final DeepLinkForm deepLinkForm = setDeepLinkForm();
+		deepLinkForm.setTitle(settings.getTitle());
+		deepLinkForm.setText(settings.getText());
+		return new DeepLinkBean(settings, deepLinkForm);
 	}
 }
