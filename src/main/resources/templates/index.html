@@ -63,13 +63,22 @@
     </div>
 </header>
 
-<ul class="list-group">
-    <li class="list-group-item">Fullname {{authenticationHolder.getFullName()}}</li>
-    <li class="list-group-item">Is Admin {{authenticationHolder.isAdmin()}}</li>
-    <li class="list-group-item">Is Instructor {{authenticationHolder.isInstructor()}}</li>
-    <li class="list-group-item">Course Code {{authenticationHolder.getCourseKey()}}</li>
-    <li class="list-group-item">Course Title {{authenticationHolder.getCourse().getTitle()}}</li>
-</ul>
+<div class="container">
+    <h1>LTI Resource Link Launch</h1>
+    <h2>Main data</h2>
+    <ul class="list-group" data-th-object="${object}">
+        <li class="list-group-item">Fullname: <span data-th-text="*{user.fullName}"></span></li>
+        <li class="list-group-item">Context Id: <span data-th-text="*{context.id}"></span></li>
+        <li class="list-group-item">Context Title: <span data-th-text="*{context.title}"></span></li>
+    </ul>
+    <div data-th-if="${object.roles}" data-th-remove="tag">
+        <h2>Roles</h2>
+        <ul class="list-group">
+            <li class="list-group-item" data-th-each="role: ${object.roles}" data-th-text="${role}">/li>
+        </ul>
+    </div>
+</div>
+
 <footer class="main-footer" role="contentinfo">
     <nav class="col-lg-12" aria-lablel="Navegació del peu de pàgina">
         <div class="col-md-12 col-sm-12 col-xs-12 col-lg-4 col-xl-4">

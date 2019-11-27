@@ -3,6 +3,7 @@ package edu.uoc.elearn.lti.provider.controller;
 import edu.uoc.elc.lti.platform.Member;
 import edu.uoc.elc.spring.security.lti.ags.AgsClient;
 import edu.uoc.elc.spring.security.lti.tool.ToolProvider;
+import edu.uoc.elearn.lti.provider.beans.IndexBean;
 import edu.uoc.elearn.lti.provider.security.UOCContext;
 import edu.uoc.elearn.lti.provider.security.UOCUser;
 import edu.uoc.lti.ags.LineItem;
@@ -13,9 +14,14 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/")
@@ -24,9 +30,13 @@ import java.util.List;
 public class MainController {
 
 	@RequestMapping(method = RequestMethod.POST)
-	@ResponseBody
-	public String init(UOCUser user, UOCContext context, ToolProvider toolProvider) throws IOException {
-		return render_home(user, context, toolProvider);
+	public ModelAndView init(UOCUser user, UOCContext context, ToolProvider toolProvider) throws IOException {
+		final IndexBean response = generateResponseObject(user, context, toolProvider);
+		return new ModelAndView("index.html", "object", response);
+	}
+
+	private IndexBean generateResponseObject(UOCUser user, UOCContext context, ToolProvider toolProvider) {
+		return new IndexBean(user, context, user.getRoles());
 	}
 
 	/**
@@ -39,11 +49,23 @@ public class MainController {
 		StringBuilder ret = new StringBuilder("<h1>Parameters:</h1>");
 		ret.append("<ul>");
 		ret.append("<li>Fullname: " + user.getFullName() + "</li>");
-		ret.append("<li>Course Code " + context.getKey() + "</li>");
+		ret.append("<li>Course Code " + context.getId() + "</li>");
 		ret.append("<li>Course Title " + context.getTitle() + "</li>");
 		ret.append("</ul>");
 
+		// roles
+		final List<String> roles = user.getRoles();
+		if (!CollectionUtils.isEmpty(roles)) {
+			ret.append("<h2>Roles</h2>");
+			ret.append("<ul>");
+			ret.append(roles.stream().map(String::toString).collect(Collectors.joining("</li><li>","<li>","</li>")));
+			ret.append("</ul>");
+
+		}
+
+
 		// add members
+		/*
 		final List<Member> members = toolProvider.getMembers();
 		if (!CollectionUtils.isEmpty(members)) {
 			ret.append("<h2>Members</h2>");
@@ -52,9 +74,10 @@ public class MainController {
 				ret.append("<li>" + member.getName() + "<" + member.getEmail() + "></li>");
 			}
 			ret.append("</ul>");
-		}
+		}*/
 
 		// add line items
+		/*
 		ret.append("<h2>Line Items</h2>");
 		final AgsClient assignmentAndGradeService = toolProvider.getAssignmentAndGradeService();
 		if (!assignmentAndGradeService.canReadLineItems()) {
@@ -67,6 +90,7 @@ public class MainController {
 			}
 			ret.append("</ul>");
 		}
+		 */
 
 		return ret.toString();
 	}
