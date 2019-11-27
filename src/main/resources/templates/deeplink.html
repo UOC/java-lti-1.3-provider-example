@@ -2,41 +2,51 @@
 <html data-layout-decorate="~{layout}">
 <div data-layout-fragment="content">
     <h1>Create Deep Link Item/s</h1>
-    <form data-th-action="@{/deeplink/new}" method="post" data-th-object="${object.deepLink}">
-        <div class="form-group">
-            <label for="title">Title</label>
-            <input type="text" id="title" data-th-field="*{title}" placeholder="title" class="form-item">
+    <form data-th-action="@{/deeplink/new}" method="post" data-th-object="${object}">
+        <div data-th-each="deepLink,stat : *{deepLinks}" class="ruler ruler--primary">
+            <h2>Item <span data-th-text="${stat.count}"></span></h2>
+            <div class="form-group">
+                <label data-th-for="|deepLinks${stat.count - 1}.title|">Title</label>
+                <input type="text" data-th-field="*{deepLinks[__${stat.index}__].title}" placeholder="title" class="form-item">
+            </div>
+            <div class="form-group">
+                <label data-th-for="|deepLinks${stat.count - 1}.text|">Text</label>
+                <input type="text" data-th-field="*{deepLinks[__${stat.index}__].text}" placeholder="text" class="form-item">
+            </div>
+            <div class="form-group">
+                <label data-th-for="|deepLinks${stat.count - 1}.url|">URL</label>
+                <input type="text" data-th-field="*{deepLinks[__${stat.index}__].url}" placeholder="url" class="form-item">
+            </div>
+            <div class="form-group">
+                <label data-th-for="|deepLinks${stat.count - 1}.type|">Type</label>
+                <select data-th-field="*{deepLinks[__${stat.index}__].type}" class="form-item">
+                    <option value="">-</option>
+                    <option data-th-each="type : *{settings.accept_types}" data-th-value="${type}" data-th-text="${type}"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label data-th-for="|deepLinks${stat.count - 1}.documentTarget|">Document Target</label>
+                <select data-th-field="*{deepLinks[__${stat.index}__].documentTarget}" class="form-item">
+                    <option value="">-</option>
+                    <option data-th-each="target : *{settings.accept_presentation_document_targets}" data-th-value="${target}" data-th-text="${target}"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label data-th-for="|deepLinks${stat.count - 1}.mediaType|">Media Type</label>
+                <select data-th-field="*{deepLinks[__${stat.index}__].mediaType}" class="form-item">
+                    <option value="">-</option>
+                    <option data-th-each="type : *{settings.accept_media_types}" data-th-value="${type}" data-th-text="${type}"></option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <button data-th-if="*{settings.accept_multiple}" type="submit" name="remove" data-th-value="${stat.index}" class="btn btn--secondary">Remove item</button>
+            </div>
         </div>
         <div class="form-group">
-            <label for="text">Text</label>
-            <input type="text" id="text" data-th-field="*{text}" placeholder="text" class="form-item">
+            <button data-th-if="*{settings.accept_multiple}" type="submit" name="add" class="btn btn--secondary">Add item</button>
+            <button type="submit" name="send" class="btn btn--primary">Send</button>
         </div>
-        <div class="form-group">
-            <label for="url">URL</label>
-            <input type="text" id="url" data-th-field="*{url}" placeholder="url" class="form-item">
-        </div>
-        <div class="form-group">
-            <label for="type">Type</label>
-            <select id="type" data-th-field="*{type}" class="form-item">
-                <option value="">-</option>
-                <option data-th-each="type : ${object.settings.accept_types}" data-th-value="${type}" data-th-text="${type}"></option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="documentTarget">Document Target</label>
-            <select id="documentTarget" data-th-field="*{documentTarget}" class="form-item">
-                <option value="">-</option>
-                <option data-th-each="target : ${object.settings.accept_presentation_document_targets}" data-th-value="${target}" data-th-text="${target}"></option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="mediaType">Media Type</label>
-            <select id="mediaType" data-th-field="*{mediaType}" class="form-item">
-                <option value="">-</option>
-                <option data-th-each="type : ${object.settings.accept_media_types}" data-th-value="${type}" data-th-text="${type}"></option>
-            </select>
-        </div>
-        <button type="submit" class="btn btn--primary">Enviar</button>
     </form>
 </div>
 </html>

@@ -1,15 +1,19 @@
 package edu.uoc.elearn.lti.provider.beans;
 
 import edu.uoc.elc.lti.tool.deeplinking.Settings;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 /**
  * @author Xavi Aracil <xaracil@uoc.edu>
  */
-@Getter
-@RequiredArgsConstructor
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class DeepLinkBean {
-	private final Settings settings;
-	private final DeepLinkForm deepLink;
+	private Settings settings;
+	private List<DeepLinkForm> deepLinks;
 }

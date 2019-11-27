@@ -11,7 +11,10 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.Arrays;
 
 /**
  * @author Xavi Aracil <xaracil@uoc.edu>
@@ -21,21 +24,50 @@ import org.springframework.web.servlet.ModelAndView;
 @Slf4j
 @PreAuthorize("isAuthenticated()")
 public class DeepLinkController {
-	public DeepLinkForm setDeepLinkForm() {
-		return new DeepLinkForm();
-	}
 
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView init(UOCUser user, UOCContext context, ToolProvider toolProvider) {
-		final DeepLinkBean deepLinkBean = prepateFormWithLaunch(toolProvider);
+		final DeepLinkBean deepLinkBean = prepareResponse(toolProvider);
+		deepLinkBean.setDeepLinks(Arrays.asList(createDeepLinkForm(toolProvider)));
+
 		return new ModelAndView("deeplink", "object", deepLinkBean);
 	}
 
-	private DeepLinkBean prepateFormWithLaunch(ToolProvider toolProvider) {
+	@RequestMapping(value = "/new", params = {"add"})
+	public ModelAndView addItem(DeepLinkBean deepLinkBean, ToolProvider toolProvider) {
+		final DeepLinkBean response = prepareResponse(toolProvider);
+		final DeepLinkForm deepLinkForm = createDeepLinkForm(toolProvider);
+		response.setDeepLinks(deepLinkBean.getDeepLinks());
+		response.getDeepLinks().add(deepLinkForm);
+		return new ModelAndView("deeplink", "object", response);
+	}
+
+	@RequestMapping(value = "/new", params = {"remove"})
+	public ModelAndView removeItem(DeepLinkBean deepLinkBean, @RequestParam(value = "remove") Integer index, ToolProvider toolProvider) {
+		final DeepLinkBean response = prepareResponse(toolProvider);
+		response.setDeepLinks(deepLinkBean.getDeepLinks());
+		response.getDeepLinks().remove(index.intValue());
+		return new ModelAndView("deeplink", "object", response);
+	}
+
+	@RequestMapping(value = "/new", params = {"save"})
+	public String save(final DeepLinkBean deepLinkBean, ToolProvider toolProvider) {
+		// TODO: save!!!
+		return null;
+	}
+
+	private DeepLinkForm createDeepLinkForm(ToolProvider toolProvider) {
 		final Settings settings = toolProvider.getDeepLinkingSettings();
-		final DeepLinkForm deepLinkForm = setDeepLinkForm();
+		final DeepLinkForm deepLinkForm = new DeepLinkForm();
 		deepLinkForm.setTitle(settings.getTitle());
 		deepLinkForm.setText(settings.getText());
-		return new DeepLinkBean(settings, deepLinkForm);
+		return deepLinkForm;
+	}
+
+	private DeepLinkBean prepareResponse(ToolProvider toolProvider) {
+		final Settings settings = toolProvider.getDeepLinkingSettings();
+		final DeepLinkBean deepLinkBean = new DeepLinkBean();
+		deepLinkBean.setSettings(settings);
+		return deepLinkBean;
 	}
 }
