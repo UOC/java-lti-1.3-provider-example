@@ -1,26 +1,19 @@
 package edu.uoc.elearn.lti.provider.controller;
 
-import edu.uoc.elc.lti.platform.Member;
-import edu.uoc.elc.spring.security.lti.ags.AgsClient;
 import edu.uoc.elc.spring.security.lti.tool.ToolProvider;
 import edu.uoc.elearn.lti.provider.beans.IndexBean;
 import edu.uoc.elearn.lti.provider.security.UOCContext;
 import edu.uoc.elearn.lti.provider.security.UOCUser;
-import edu.uoc.lti.ags.LineItem;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Controller
