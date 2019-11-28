@@ -1,5 +1,7 @@
 package edu.uoc.elearn.lti.provider.controller;
 
+import edu.uoc.elc.lti.platform.Member;
+import edu.uoc.elc.spring.security.lti.tool.NamesRoleServiceProvider;
 import edu.uoc.elc.spring.security.lti.tool.ToolProvider;
 import edu.uoc.elearn.lti.provider.beans.IndexBean;
 import edu.uoc.elearn.lti.provider.security.UOCContext;
@@ -23,15 +25,21 @@ import java.util.stream.Collectors;
 public class MainController {
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView init(UOCUser user, UOCContext context, ToolProvider toolProvider) throws IOException {
+	public ModelAndView init(UOCUser user, UOCContext context, ToolProvider toolProvider) {
 		final IndexBean response = generateResponseObject(user, context, toolProvider);
 		return new ModelAndView("index.html", "object", response);
 	}
 
 	private IndexBean generateResponseObject(UOCUser user, UOCContext context, ToolProvider toolProvider) {
-		return new IndexBean(user, context, user.getRoles());
+		final List<String> roles = user.getRoles();
+		final List<Member> members = getMembers(toolProvider);
+		return new IndexBean(user, context, roles, members);
 	}
 
+	private List<Member> getMembers(ToolProvider toolProvider) {
+		final NamesRoleServiceProvider namesRoleServiceProvider = toolProvider.getNamesRoleServiceProvider();
+		return namesRoleServiceProvider.getMembers();
+	}
 	/**
 	 * Renders a home with requested data
 	 *
@@ -40,34 +48,6 @@ public class MainController {
 	private String render_home(UOCUser user, UOCContext context, ToolProvider toolProvider) throws IOException {
 
 		StringBuilder ret = new StringBuilder("<h1>Parameters:</h1>");
-		ret.append("<ul>");
-		ret.append("<li>Fullname: " + user.getFullName() + "</li>");
-		ret.append("<li>Course Code " + context.getId() + "</li>");
-		ret.append("<li>Course Title " + context.getTitle() + "</li>");
-		ret.append("</ul>");
-
-		// roles
-		final List<String> roles = user.getRoles();
-		if (!CollectionUtils.isEmpty(roles)) {
-			ret.append("<h2>Roles</h2>");
-			ret.append("<ul>");
-			ret.append(roles.stream().map(String::toString).collect(Collectors.joining("</li><li>","<li>","</li>")));
-			ret.append("</ul>");
-
-		}
-
-
-		// add members
-		/*
-		final List<Member> members = toolProvider.getMembers();
-		if (!CollectionUtils.isEmpty(members)) {
-			ret.append("<h2>Members</h2>");
-			ret.append("<ul>");
-			for (Member member : members) {
-				ret.append("<li>" + member.getName() + "<" + member.getEmail() + "></li>");
-			}
-			ret.append("</ul>");
-		}*/
 
 		// add line items
 		/*

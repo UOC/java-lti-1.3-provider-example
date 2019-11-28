@@ -1,5 +1,6 @@
 package edu.uoc.elearn.lti.provider.beans;
 
+import edu.uoc.elc.lti.platform.Member;
 import edu.uoc.elearn.lti.provider.security.UOCContext;
 import edu.uoc.elearn.lti.provider.security.UOCUser;
 import lombok.Getter;
@@ -16,4 +17,5 @@ public class IndexBean {
 	private final UOCUser user;
 	private final UOCContext context;
 	private final List<String> roles;
+	private final List<Member> members;
 }

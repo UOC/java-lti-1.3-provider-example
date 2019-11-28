@@ -14,5 +14,11 @@
             <li class="list-group-item" data-th-each="role: *{roles}" data-th-text="${role}">/li>
         </ul>
     </div>
+    <div data-th-unless="*{#lists.isEmpty(members)}" data-th-remove="tag">
+        <h2>Members</h2>
+        <ul class="list-group">
+            <li class="list-group-item" data-th-each="member: *{members}" data-th-text="|${member.name} <${member.email}>|">/li>
+        </ul>
+    </div>
 </div>
 </html>
