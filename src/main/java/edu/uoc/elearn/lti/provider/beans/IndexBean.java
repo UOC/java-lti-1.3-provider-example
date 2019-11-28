@@ -3,6 +3,7 @@ package edu.uoc.elearn.lti.provider.beans;
 import edu.uoc.elc.lti.platform.Member;
 import edu.uoc.elearn.lti.provider.security.UOCContext;
 import edu.uoc.elearn.lti.provider.security.UOCUser;
+import edu.uoc.lti.ags.LineItem;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -18,4 +19,5 @@ public class IndexBean {
 	private final UOCContext context;
 	private final List<String> roles;
 	private final List<Member> members;
+	private final List<LineItem> lineItems;
 }

@@ -14,11 +14,32 @@
             <li class="list-group-item" data-th-each="role: *{roles}" data-th-text="${role}">/li>
         </ul>
     </div>
-    <div data-th-unless="*{#lists.isEmpty(members)}" data-th-remove="tag">
+    <div class="row" data-th-unless="*{#lists.isEmpty(members)}">
         <h2>Members</h2>
-        <ul class="list-group">
-            <li class="list-group-item" data-th-each="member: *{members}" data-th-text="|${member.name} <${member.email}>|">/li>
-        </ul>
+        <div data-th-each="member: *{members}" data-th-aria-label="${member.name}" class="card" role="region">
+            <div class="card__header">
+                <h2 class="ruler ruler--primary" data-th-text="${member.name}"></h2>
+            </div>
+            <div class="card__contents">
+                <p><span class="icon icon--contact icon--small icon--before" data-th-text="${member.email}"></span></p>
+                <h3>Roles</h3>
+                <ul class="list-group">
+                    <li class="list-group-item" data-th-each="role: ${member.roles}" data-th-text="${role}">/li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row" data-th-unless="*{#lists.isEmpty(lineItems)}">
+        <h2>Line Items</h2>
+        <div data-th-each="lineItem: *{lineItems}" data-th-aria-label="${lineItem.label}" class="card" role="region">
+            <div class="card__header">
+                <h2 class="ruler ruler--primary" data-th-text="${lineItem.label}"></h2>
+            </div>
+            <div class="card__contents">
+                <p><em>ID:</em><span data-th-text="${lineItem.id}"></span></p>
+                <p><em>Maximum score:</em><span data-th-text="${lineItem.scoreMaximum}"></span></p>
+            </div>
+        </div>
     </div>
 </div>
 </html>
