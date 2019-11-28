@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html data-layout-decorate="~{layout}">
+<div data-layout-fragment="content" data-th-object="${object}">
+    <h1>Confirm creation</h1>
+    <h2>URL</h2>
+    <p data-th-text="*{url}"></p>
+    <h2>JWT</h2>
+    <p data-th-text="*{JWT}"></p>
+    <form data-th-action="*{url}" method="post">
+        <input type="hidden" data-th-field="*{JWT}"></input>
+        <button type="submit" class="btn btn--primary">Send</button>
+    </form>
+</div>
+</html>
