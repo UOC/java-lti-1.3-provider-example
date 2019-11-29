@@ -1,7 +1,7 @@
 package edu.uoc.elearn.lti.provider.security;
 
 import edu.uoc.elc.spring.security.lti.LTIAuthenticationDetailsSource;
-import edu.uoc.elc.spring.security.lti.tool.ToolDefinition;
+import edu.uoc.elc.spring.security.lti.tool.ToolDefinitionBean;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,8 +25,8 @@ public class UOCLTIAuthenticationDetailsSource extends LTIAuthenticationDetailsS
 		this(null, null, null);
 	}
 
-	public UOCLTIAuthenticationDetailsSource(ToolDefinition toolDefinition, List<String> adminUsers, List<String> adminDomainCodes) {
-		super(toolDefinition);
+	public UOCLTIAuthenticationDetailsSource(ToolDefinitionBean toolDefinitionBean, List<String> adminUsers, List<String> adminDomainCodes) {
+		super(toolDefinitionBean);
 		this.adminUsers = adminUsers;
 		this.adminDomainCodes = adminDomainCodes;
 	}

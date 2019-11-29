@@ -2,7 +2,7 @@ package edu.uoc.elearn.lti.provider.security;
 
 import edu.uoc.elc.spring.security.lti.LTIApplicationSecurity;
 import edu.uoc.elc.spring.security.lti.LTIProcessingFilter;
-import edu.uoc.elc.spring.security.lti.tool.ToolDefinition;
+import edu.uoc.elc.spring.security.lti.tool.ToolDefinitionBean;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,8 +15,8 @@ import java.util.List;
 @Order(90)
 public class UOCLTIApplicationSecurity extends LTIApplicationSecurity {
 
-	public UOCLTIApplicationSecurity(ToolDefinition toolDefinition) {
-		super(toolDefinition);
+	public UOCLTIApplicationSecurity(ToolDefinitionBean toolDefinitionBean) {
+		super(toolDefinitionBean);
 	}
 
 	@Bean
@@ -35,7 +35,7 @@ public class UOCLTIApplicationSecurity extends LTIApplicationSecurity {
 	protected LTIProcessingFilter getPreAuthFilter() throws Exception {
 		final LTIProcessingFilter preAuthFilter = super.getPreAuthFilter();
 
-		preAuthFilter.setAuthenticationDetailsSource(new UOCLTIAuthenticationDetailsSource(getToolDefinition(), adminUsers(), adminDomainCodes()));
+		preAuthFilter.setAuthenticationDetailsSource(new UOCLTIAuthenticationDetailsSource(getToolDefinitionBean(), adminUsers(), adminDomainCodes()));
 
 		return preAuthFilter;
 	}
