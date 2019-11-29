@@ -18,6 +18,8 @@ public class IndexBean {
 	private final UOCUser user;
 	private final UOCContext context;
 	private final List<String> roles;
+	private final Boolean hasNamesRoleService;
 	private final List<Member> members;
+	private final Boolean hasAgsService;
 	private final List<LineItem> lineItems;
 }

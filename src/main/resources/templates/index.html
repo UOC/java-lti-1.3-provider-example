@@ -7,6 +7,16 @@
         <li class="list-group-item">Fullname: <span data-th-text="*{user.fullName}"></span></li>
         <li class="list-group-item">Context Id: <span data-th-text="*{context.id}"></span></li>
         <li class="list-group-item">Context Title: <span data-th-text="*{context.title}"></span></li>
+        <li class="list-group-item">
+            <span data-th-unless="*{hasNamesRoleService}" aria-hidden="true" class="icon icon--checkbox-off icon--small icon--before"></span>
+            <span data-th-if="*{hasNamesRoleService}" aria-hidden="true" class="icon icon--checkbox-on icon--small icon--before"></span>
+            NamesRoleService
+        </li>
+        <li class="list-group-item">
+            <span data-th-unless="*{hasAgsService}" aria-hidden="true" class="icon icon--checkbox-off icon--small icon--before"></span>
+            <span data-th-if="*{hasAgsService}" aria-hidden="true" class="icon icon--checkbox-on icon--small icon--before"></span>
+            Assignments and Grades Service
+        </li>
     </ul>
     <div data-th-if="*{roles}" data-th-remove="tag">
         <h2>Roles</h2>

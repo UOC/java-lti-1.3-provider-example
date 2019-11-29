@@ -33,9 +33,21 @@ public class MainController {
 
 	private IndexBean generateResponseObject(UOCUser user, UOCContext context, ToolProvider toolProvider) throws URISyntaxException {
 		final List<String> roles = user.getRoles();
+		final Boolean hasNamesRoleService = hasNamesRoleService(toolProvider);
 		final List<Member> members = getMembers(toolProvider);
+		final Boolean hasAgsService = hasAgsService(toolProvider);
 		final List<LineItem> lineItems = getLineItems(toolProvider);
-		return new IndexBean(user, context, roles, members, lineItems);
+		return new IndexBean(user, context, roles, hasNamesRoleService, members, hasAgsService, lineItems);
+	}
+
+	private Boolean hasAgsService(ToolProvider toolProvider) {
+		final AgsServiceProvider agsServiceProvider = toolProvider.getAgsServiceProvider();
+		return agsServiceProvider.hasAgsService();
+	}
+
+	private Boolean hasNamesRoleService(ToolProvider toolProvider) {
+		final NamesRoleServiceProvider namesRoleServiceProvider = toolProvider.getNamesRoleServiceProvider();
+		return namesRoleServiceProvider.hasNameRoleService();
 	}
 
 	private List<Member> getMembers(ToolProvider toolProvider) throws URISyntaxException {
