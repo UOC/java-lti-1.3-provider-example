@@ -7,8 +7,6 @@ import edu.uoc.elearn.lti.provider.beans.DeepLinkBean;
 import edu.uoc.elearn.lti.provider.beans.DeepLinkCreationResponseBean;
 import edu.uoc.elearn.lti.provider.beans.DeepLinkForm;
 import edu.uoc.elearn.lti.provider.domain.ItemListFactory;
-import edu.uoc.elearn.lti.provider.security.UOCContext;
-import edu.uoc.elearn.lti.provider.security.UOCUser;
 import edu.uoc.lti.deeplink.content.Item;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.access.prepost.PreAuthorize;
