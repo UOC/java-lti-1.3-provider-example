@@ -1,4 +1,4 @@
-package edu.uoc.elearn.lti.provider.service;
+package edu.uoc.elearn.lti.provider.service.ags;
 
 import edu.uoc.elc.lti.platform.ags.GenericResultServiceClient;
 import edu.uoc.elc.spring.lti.tool.AgsServiceProvider;
