@@ -18,7 +18,7 @@ import java.util.List;
  * @author Xavi Aracil <xaracil@uoc.edu>
  */
 @Service
-public class AgsResolverImpl implements AgsResolver {
+public class AgsLineItemsResolverImpl implements AgsLineItemsResolver {
 
 	@Override
 	public AgsBean list(ToolProvider toolProvider, String tag) {
@@ -54,6 +54,7 @@ public class AgsResolverImpl implements AgsResolver {
 		final List<Member> members = getMembers(toolProvider);
 		return new LineItemBean(lineItem, members, results);
 	}
+
 	private LineItem getLineItem(String id, ToolProvider toolProvider) {
 		LineItemVisitor lineItemVisitor = new LineItemVisitor(toolProvider);
 		return lineItemVisitor.get(id);

@@ -7,7 +7,7 @@ import edu.uoc.elearn.lti.provider.beans.LineItemBean;
 /**
  * @author Xavi Aracil <xaracil@uoc.edu>
  */
-public interface AgsResolver {
+public interface AgsLineItemsResolver {
 	AgsBean list(ToolProvider toolProvider, String tag);
 	void createLineItem(String label, Double maxScore, ToolProvider toolProvider, String tag);
 	LineItemBean get(String id, ToolProvider toolProvider);
