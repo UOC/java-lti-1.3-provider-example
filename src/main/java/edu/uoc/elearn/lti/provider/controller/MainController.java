@@ -4,6 +4,7 @@ import edu.uoc.elc.lti.platform.Member;
 import edu.uoc.elc.spring.lti.security.Context;
 import edu.uoc.elc.spring.lti.security.User;
 import edu.uoc.elearn.lti.provider.beans.IndexBean;
+import edu.uoc.elearn.lti.provider.beans.NamesRoleBean;
 import edu.uoc.elearn.lti.provider.service.LineItemVisitor;
 import edu.uoc.elearn.lti.provider.service.MemberVisitor;
 import edu.uoc.lti.ags.LineItem;
@@ -34,10 +35,15 @@ public class MainController {
 
 	private IndexBean generateResponseObject(User user, Context context) {
 		final List<String> roles = user.getRoles();
-		final Boolean hasNamesRoleService = memberVisitor.canGet();
-		final List<Member> members = memberVisitor.getAll();
+		final NamesRoleBean namesRoleBean = createBeanWithNamesRoleInfo();
 		final Boolean hasAgsService = lineItemVisitor.canGet();
 		final List<LineItem> lineItems = lineItemVisitor.getAll();
-		return new IndexBean(user, context, roles, hasNamesRoleService, members, hasAgsService, lineItems);
+		return new IndexBean(user, context, roles, namesRoleBean, hasAgsService, lineItems);
+	}
+
+	private NamesRoleBean createBeanWithNamesRoleInfo() {
+		final Boolean available = memberVisitor.canGet();
+		final List<Member> members = memberVisitor.getAll();
+		return new NamesRoleBean(available, members);
 	}
 }

@@ -8,8 +8,8 @@
         <li class="list-group-item">Context Id: <span data-th-text="*{context.id}"></span></li>
         <li class="list-group-item">Context Title: <span data-th-text="*{context.title}"></span></li>
         <li class="list-group-item">
-            <span data-th-unless="*{hasNamesRoleService}" aria-hidden="true" class="icon icon--checkbox-off icon--small"></span>
-            <span data-th-if="*{hasNamesRoleService}" aria-hidden="true" class="icon icon--checkbox-on icon--small"></span>
+            <span data-th-unless="*{namesRoleService.available}" aria-hidden="true" class="icon icon--checkbox-off icon--small"></span>
+            <span data-th-if="*{namesRoleService.available}" aria-hidden="true" class="icon icon--checkbox-on icon--small"></span>
             NamesRoleService
         </li>
         <li class="list-group-item" data-th-if="*{hasAgsService}">
@@ -27,9 +27,9 @@
             <li class="list-group-item" data-th-each="role: *{roles}" data-th-text="${role}">/li>
         </ul>
     </div>
-    <div class="row" data-th-unless="*{#lists.isEmpty(members)}">
+    <div class="row" data-th-unless="*{#lists.isEmpty(namesRoleService.members)}">
         <h2>Members</h2>
-        <div data-th-each="member: *{members}" data-th-aria-label="${member.name}" class="card" role="region">
+        <div data-th-each="member: *{namesRoleService.members}" data-th-aria-label="${member.name}" class="card" role="region">
             <div class="card__header">
                 <h2 class="ruler ruler--primary" data-th-text="${member.name}"></h2>
             </div>

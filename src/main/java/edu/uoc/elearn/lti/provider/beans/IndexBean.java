@@ -18,8 +18,7 @@ public class IndexBean {
 	private final User user;
 	private final Context context;
 	private final List<String> roles;
-	private final Boolean hasNamesRoleService;
-	private final List<Member> members;
+	private final NamesRoleBean namesRoleService;
 	private final Boolean hasAgsService;
 	private final List<LineItem> lineItems;
 }
