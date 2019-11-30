@@ -15,11 +15,6 @@ import java.util.List;
 public class ResultsVisitor {
 	private final ToolProvider toolProvider;
 
-	public boolean canGet() {
-		final AgsServiceProvider agsServiceProvider = toolProvider.getAgsServiceProvider();
-		return agsServiceProvider.hasAgsService();
-	}
-
 	public List<Result> getAll(String id) {
 		return getAll(id, null, null, null);
 	}
