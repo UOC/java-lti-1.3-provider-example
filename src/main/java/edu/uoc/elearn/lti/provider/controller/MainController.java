@@ -8,7 +8,9 @@ import edu.uoc.elc.spring.lti.tool.AgsServiceProvider;
 import edu.uoc.elc.spring.lti.tool.NamesRoleServiceProvider;
 import edu.uoc.elc.spring.lti.tool.ToolProvider;
 import edu.uoc.elearn.lti.provider.beans.IndexBean;
+import edu.uoc.elearn.lti.provider.service.MemberVisitor;
 import edu.uoc.lti.ags.LineItem;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -23,7 +25,9 @@ import java.util.List;
 @RequestMapping("/")
 @Slf4j
 @PreAuthorize("isAuthenticated()")
+@RequiredArgsConstructor
 public class MainController {
+	private final MemberVisitor memberVisitor;
 
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView init(User user, Context context, ToolProvider toolProvider) throws URISyntaxException {
@@ -33,8 +37,8 @@ public class MainController {
 
 	private IndexBean generateResponseObject(User user, Context context, ToolProvider toolProvider) throws URISyntaxException {
 		final List<String> roles = user.getRoles();
-		final Boolean hasNamesRoleService = hasNamesRoleService(toolProvider);
-		final List<Member> members = getMembers(toolProvider);
+		final Boolean hasNamesRoleService = memberVisitor.canGet();
+		final List<Member> members = memberVisitor.getAll();
 		final Boolean hasAgsService = hasAgsService(toolProvider);
 		final List<LineItem> lineItems = getLineItems(toolProvider);
 		return new IndexBean(user, context, roles, hasNamesRoleService, members, hasAgsService, lineItems);
@@ -43,16 +47,6 @@ public class MainController {
 	private Boolean hasAgsService(ToolProvider toolProvider) {
 		final AgsServiceProvider agsServiceProvider = toolProvider.getAgsServiceProvider();
 		return agsServiceProvider.hasAgsService();
-	}
-
-	private Boolean hasNamesRoleService(ToolProvider toolProvider) {
-		final NamesRoleServiceProvider namesRoleServiceProvider = toolProvider.getNamesRoleServiceProvider();
-		return namesRoleServiceProvider.hasNameRoleService();
-	}
-
-	private List<Member> getMembers(ToolProvider toolProvider) throws URISyntaxException {
-		final NamesRoleServiceProvider namesRoleServiceProvider = toolProvider.getNamesRoleServiceProvider();
-		return namesRoleServiceProvider.getMembers();
 	}
 
 	private List<LineItem> getLineItems(ToolProvider toolProvider) {
