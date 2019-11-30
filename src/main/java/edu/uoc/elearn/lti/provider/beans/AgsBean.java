@@ -12,5 +12,6 @@ import java.util.List;
 @RequiredArgsConstructor
 @Getter
 public class AgsBean {
+	private final Boolean available;
 	private final List<LineItem> lineItems;
 }

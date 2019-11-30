@@ -12,11 +12,11 @@
             <span data-th-if="*{namesRoleService.available}" aria-hidden="true" class="icon icon--checkbox-on icon--small"></span>
             NamesRoleService
         </li>
-        <li class="list-group-item" data-th-if="*{hasAgsService}">
+        <li class="list-group-item" data-th-if="*{agsService.available}">
             <span aria-hidden="true" class="icon icon--checkbox-on icon--small"></span>
             <a data-th-href="@{/ags}">Assignments and Grades Service<span aria-hidden="true" class="icon icon--external-link icon--small icon--after"></span></a>
         </li>
-        <li class="list-group-item" data-th-unless="*{hasAgsService}">
+        <li class="list-group-item" data-th-unless="*{agsService.available}">
             <span aria-hidden="true" class="icon icon--checkbox-off icon--small"></span>
             Assignments and Grades Service
         </li>
@@ -42,9 +42,9 @@
             </div>
         </div>
     </div>
-    <div class="row" data-th-unless="*{#lists.isEmpty(lineItems)}">
+    <div class="row" data-th-unless="*{#lists.isEmpty(agsService.lineItems)}">
         <h2>Line Items</h2>
-        <div data-th-each="lineItem: *{lineItems}" data-th-aria-label="${lineItem.label}" class="card" role="region">
+        <div data-th-each="lineItem: *{agsService.lineItems}" data-th-aria-label="${lineItem.label}" class="card" role="region">
             <div class="card__header">
                 <h2 class="ruler ruler--primary" data-th-text="${lineItem.label}"></h2>
             </div>

@@ -28,7 +28,7 @@ public class AgsController {
 	public ModelAndView list(ToolProvider toolProvider) {
 		final ToolLineItemServiceClient lineItemServiceClient = getLineItemServiceClient(toolProvider);
 		final List<LineItem> lineItems = lineItemServiceClient.getLineItems(null, null, "UOC-TEST", null);
-		AgsBean agsBean = new AgsBean(lineItems);
+		AgsBean agsBean = new AgsBean(true, lineItems);
 		return new ModelAndView("ags/index", "object", agsBean);
 	}
 
