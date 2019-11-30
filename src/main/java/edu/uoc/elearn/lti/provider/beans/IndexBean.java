@@ -1,6 +1,5 @@
 package edu.uoc.elearn.lti.provider.beans;
 
-import edu.uoc.elc.lti.platform.Member;
 import edu.uoc.elc.spring.lti.security.Context;
 import edu.uoc.elc.spring.lti.security.User;
 import edu.uoc.lti.ags.LineItem;
