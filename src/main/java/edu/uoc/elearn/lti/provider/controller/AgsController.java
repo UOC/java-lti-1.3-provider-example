@@ -5,11 +5,14 @@ import edu.uoc.elc.spring.lti.tool.ToolProvider;
 import edu.uoc.elearn.lti.provider.beans.AgsBean;
 import edu.uoc.elearn.lti.provider.beans.LineItemBean;
 import edu.uoc.elearn.lti.provider.domain.LineItemFactory;
-import edu.uoc.elearn.lti.provider.service.ResultsVisitor;
+import edu.uoc.elearn.lti.provider.domain.ScoreFactory;
 import edu.uoc.elearn.lti.provider.service.LineItemVisitor;
 import edu.uoc.elearn.lti.provider.service.MemberVisitor;
+import edu.uoc.elearn.lti.provider.service.ResultsVisitor;
+import edu.uoc.elearn.lti.provider.service.ScoreVisitor;
 import edu.uoc.lti.ags.LineItem;
 import edu.uoc.lti.ags.Result;
+import edu.uoc.lti.ags.Score;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -53,10 +56,18 @@ public class AgsController {
 		return new ModelAndView("ags/view", "object", lineItemBean);
 	}
 
+	@RequestMapping(method = RequestMethod.POST, path = "/score")
+	public String score(@RequestParam("id") String id, String userId, Double score, String comment, ToolProvider toolProvider) {
+		final Score scoreObject = createScoreObject(userId, score, comment);
+		saveScoreInPlatform(id, scoreObject, toolProvider);
+		return "redirect:/ags/view?id=" + id;
+	}
+
 	private LineItem getLineItem(String id, ToolProvider toolProvider) {
 		LineItemVisitor lineItemVisitor = new LineItemVisitor(toolProvider);
 		return lineItemVisitor.get(id);
 	}
+
 	private List<Result> getResultsOfLineItem(String id, ToolProvider toolProvider) {
 		ResultsVisitor resultsVisitor = new ResultsVisitor(toolProvider);
 		return resultsVisitor.getAll(id);
@@ -82,4 +93,16 @@ public class AgsController {
 		return memberVisitor.getAll();
 	}
 
+	private Score createScoreObject(String userId, Double score, String comment) {
+		ScoreFactory scoreFactory = new ScoreFactory();
+		return scoreFactory.from(userId, score, comment);
+	}
+
+	private void saveScoreInPlatform(String id, Score score, ToolProvider toolProvider) {
+		final ScoreVisitor scoreVisitor = new ScoreVisitor(toolProvider);
+		final boolean scored = scoreVisitor.score(id, score);
+		if (!scored) {
+			throw new RuntimeException("Scored failed!!!");
+		}
+	}
 }

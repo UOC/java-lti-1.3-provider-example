@@ -17,5 +17,4 @@ public class LineItemBean {
 	private final LineItem lineItem;
 	private final List<Member> members;
 	private final List<Result> results;
-	private final ScoreBean score = new ScoreBean();
 }

@@ -14,21 +14,21 @@
         </div>
     </div>
     <h2>Score</h2>
-    <form data-th-action="@{/ags/score(id=${object.lineItem.id})}" method="post" data-th-object="${object.score}">
+    <form data-th-action="@{/ags/score(id=${object.lineItem.id})}" method="post">
         <div class="form-group">
             <label for="userId">User</label>
-            <select id="userId" data-th-field="*{userId}" class="form-item">
+            <select id="userId" name="userId" class="form-item">
                 <option value="">-</option>
                 <option data-th-each="member : ${object.members}" data-th-value="${member.userId}" data-th-text="${member.name}"></option>
             </select>
         </div>
         <div class="form-group">
             <label for="score">Score</label>
-            <input id="score" type="number" data-th-field="*{score}" placeholder="score" class="form-item">
+            <input type="number" id="score" name="score" placeholder="score" class="form-item">
         </div>
         <div class="form-group">
             <label for="comment">Comment</label>
-            <textarea id="comment" data-th-field="*{comment}" placeholder="comment" class="form-item"></textarea>
+            <textarea id="comment" name="comment" placeholder="comment" class="form-item"></textarea>
         </div>
         <div class="form-group">
             <button type="submit" name="save" class="btn btn--primary">Send</button>
