@@ -13,10 +13,12 @@
                 <div class="alert alert--error">
                     <span aria-hidden="true" class="icon icon--x-circle icon--before color-red"></span>
                     Something really bad has happened. Check the logs
-
-                    <code data-th-text="${exception}">
+                    <p>Message:</p>
+                    <code data-th-text="${#request.getAttribute('javax.servlet.error.message')}">
                     </code>
-
+                    <p>Exception:</p>
+                    <code data-th-text="${#request.getAttribute('javax.servlet.error.exception')}">
+                    </code>
                 </div>
             </div>
         </div>
