@@ -1,8 +1,8 @@
 package edu.uoc.elearn.lti.provider.security;
 
-import edu.uoc.elc.spring.security.lti.LTIApplicationSecurity;
-import edu.uoc.elc.spring.security.lti.LTIProcessingFilter;
-import edu.uoc.elc.spring.security.lti.tool.ToolDefinitionBean;
+import edu.uoc.elc.spring.lti.security.LTIApplicationSecurity;
+import edu.uoc.elc.spring.lti.security.LTIProcessingFilter;
+import edu.uoc.elc.spring.lti.tool.ToolDefinitionBean;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

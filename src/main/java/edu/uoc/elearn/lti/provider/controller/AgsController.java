@@ -1,8 +1,8 @@
 package edu.uoc.elearn.lti.provider.controller;
 
 import edu.uoc.elc.lti.platform.ags.ToolLineItemServiceClient;
-import edu.uoc.elc.spring.security.lti.tool.AgsServiceProvider;
-import edu.uoc.elc.spring.security.lti.tool.ToolProvider;
+import edu.uoc.elc.spring.lti.tool.AgsServiceProvider;
+import edu.uoc.elc.spring.lti.tool.ToolProvider;
 import edu.uoc.elearn.lti.provider.beans.AgsBean;
 import edu.uoc.elearn.lti.provider.domain.LineItemFactory;
 import edu.uoc.lti.ags.LineItem;

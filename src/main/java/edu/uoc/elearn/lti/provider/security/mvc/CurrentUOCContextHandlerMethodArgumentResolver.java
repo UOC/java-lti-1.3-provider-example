@@ -1,6 +1,6 @@
 package edu.uoc.elearn.lti.provider.security.mvc;
 
-import edu.uoc.elc.spring.security.lti.User;
+import edu.uoc.elc.spring.lti.security.User;
 import edu.uoc.elearn.lti.provider.security.UOCContext;
 import org.springframework.core.MethodParameter;
 import org.springframework.security.core.Authentication;

@@ -2,9 +2,9 @@ package edu.uoc.elearn.lti.provider.controller;
 
 import edu.uoc.elc.lti.platform.Member;
 import edu.uoc.elc.lti.platform.ags.ToolLineItemServiceClient;
-import edu.uoc.elc.spring.security.lti.tool.AgsServiceProvider;
-import edu.uoc.elc.spring.security.lti.tool.NamesRoleServiceProvider;
-import edu.uoc.elc.spring.security.lti.tool.ToolProvider;
+import edu.uoc.elc.spring.lti.tool.AgsServiceProvider;
+import edu.uoc.elc.spring.lti.tool.NamesRoleServiceProvider;
+import edu.uoc.elc.spring.lti.tool.ToolProvider;
 import edu.uoc.elearn.lti.provider.beans.IndexBean;
 import edu.uoc.elearn.lti.provider.security.UOCContext;
 import edu.uoc.elearn.lti.provider.security.UOCUser;

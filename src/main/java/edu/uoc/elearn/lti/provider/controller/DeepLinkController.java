@@ -2,7 +2,7 @@ package edu.uoc.elearn.lti.provider.controller;
 
 import edu.uoc.elc.lti.platform.deeplinking.DeepLinkingClient;
 import edu.uoc.elc.lti.tool.deeplinking.Settings;
-import edu.uoc.elc.spring.security.lti.tool.ToolProvider;
+import edu.uoc.elc.spring.lti.tool.ToolProvider;
 import edu.uoc.elearn.lti.provider.beans.DeepLinkBean;
 import edu.uoc.elearn.lti.provider.beans.DeepLinkCreationResponseBean;
 import edu.uoc.elearn.lti.provider.beans.DeepLinkForm;

@@ -1,7 +1,7 @@
 package edu.uoc.elearn.lti.provider.config;
 
-import edu.uoc.elc.spring.security.lti.ags.RestTemplateFactory;
-import edu.uoc.elc.spring.security.lti.tool.BasicToolDefinition;
+import edu.uoc.elc.spring.lti.ags.RestTemplateFactory;
+import edu.uoc.elc.spring.lti.tool.BasicToolDefinition;
 import edu.uoc.lti.accesstoken.AccessTokenRequestBuilder;
 import edu.uoc.lti.accesstoken.UrlEncodedFormAccessTokenRequestBuilderImpl;
 import edu.uoc.lti.claims.ClaimAccessor;
@@ -12,7 +12,6 @@ import edu.uoc.lti.jwt.client.JWSClientCredentialsTokenBuilder;
 import edu.uoc.lti.jwt.deeplink.JWSTokenBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.client.RestTemplate;
 
 /**
  * @author Xavi Aracil <xaracil@uoc.edu>
