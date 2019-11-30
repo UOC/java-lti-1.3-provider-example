@@ -29,6 +29,11 @@ public class LineItemVisitor {
 		return lineItemsServiceClient.getLineItems(limit, page, tag, resourceId);
 	}
 
+	public LineItem get(String id) {
+		final ToolLineItemServiceClient lineItemsServiceClient = getServiceClient();
+		return lineItemsServiceClient.getLineItem(id);
+	}
+
 	public LineItem create(LineItem lineItem) {
 		final ToolLineItemServiceClient lineItemsServiceClient = getServiceClient();
 		return lineItemsServiceClient.createLineItem(lineItem);
