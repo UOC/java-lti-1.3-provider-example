@@ -11,5 +11,4 @@ public interface AgsResolver {
 	AgsBean list(ToolProvider toolProvider, String tag);
 	void createLineItem(String label, Double maxScore, ToolProvider toolProvider, String tag);
 	LineItemBean get(String id, ToolProvider toolProvider);
-	boolean score(String id, String userId, Double score, String comment, ToolProvider toolProvider);
 }

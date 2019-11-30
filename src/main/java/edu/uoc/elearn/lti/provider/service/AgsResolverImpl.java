@@ -5,14 +5,11 @@ import edu.uoc.elc.spring.lti.tool.ToolProvider;
 import edu.uoc.elearn.lti.provider.beans.AgsBean;
 import edu.uoc.elearn.lti.provider.beans.LineItemBean;
 import edu.uoc.elearn.lti.provider.domain.LineItemFactory;
-import edu.uoc.elearn.lti.provider.domain.ScoreFactory;
 import edu.uoc.elearn.lti.provider.service.ags.LineItemVisitor;
 import edu.uoc.elearn.lti.provider.service.ags.MemberVisitor;
 import edu.uoc.elearn.lti.provider.service.ags.ResultsVisitor;
-import edu.uoc.elearn.lti.provider.service.ags.ScoreVisitor;
 import edu.uoc.lti.ags.LineItem;
 import edu.uoc.lti.ags.Result;
-import edu.uoc.lti.ags.Score;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -70,22 +67,5 @@ public class AgsResolverImpl implements AgsResolver {
 	private List<Member> getMembers(ToolProvider toolProvider) {
 		final MemberVisitor memberVisitor = new MemberVisitor(toolProvider);
 		return memberVisitor.getAll();
-	}
-
-	@Override
-	public boolean score(String id, String userId, Double score, String comment, ToolProvider toolProvider) {
-		final Score scoreObject = createScoreObject(userId, score, comment);
-		saveScoreInPlatform(id, scoreObject, toolProvider);
-		return false;
-	}
-
-	private Score createScoreObject(String userId, Double score, String comment) {
-		ScoreFactory scoreFactory = new ScoreFactory();
-		return scoreFactory.from(userId, score, comment);
-	}
-
-	private void saveScoreInPlatform(String id, Score score, ToolProvider toolProvider) {
-		final ScoreVisitor scoreVisitor = new ScoreVisitor(toolProvider);
-		final boolean scored = scoreVisitor.score(id, score);
 	}
 }

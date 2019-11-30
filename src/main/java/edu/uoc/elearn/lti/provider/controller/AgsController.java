@@ -42,13 +42,4 @@ public class AgsController {
 		final LineItemBean lineItemBean = agsResolver.get(id, toolProvider);
 		return new ModelAndView("ags/view", "object", lineItemBean);
 	}
-
-	@RequestMapping(method = RequestMethod.POST, path = "/score")
-	public String score(@RequestParam("id") String id, String userId, Double score, String comment, ToolProvider toolProvider) {
-		final boolean scored = agsResolver.score(id, userId, score, comment, toolProvider);
-		if (!scored) {
-			throw new RuntimeException("Scored failed!!!");
-		}
-		return "redirect:/ags/view?id=" + id;
-	}
 }
