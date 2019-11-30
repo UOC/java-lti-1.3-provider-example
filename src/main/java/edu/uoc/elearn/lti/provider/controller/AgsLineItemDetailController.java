@@ -11,11 +11,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import static edu.uoc.elearn.lti.provider.controller.Paths.AGS_LINEITEM;
+
 /**
  * @author Xavi Aracil <xaracil@uoc.edu>
  */
 @Controller
-@RequestMapping("/ags/lineitems")
+@RequestMapping(AGS_LINEITEM)
 @Slf4j
 @PreAuthorize("isAuthenticated()")
 @RequiredArgsConstructor

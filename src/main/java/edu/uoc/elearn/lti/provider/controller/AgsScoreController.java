@@ -11,11 +11,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import static edu.uoc.elearn.lti.provider.controller.Paths.AGS_LINEITEM_SCORE;
+
 /**
  * @author Xavi Aracil <xaracil@uoc.edu>
  */
 @Controller
-@RequestMapping("/ags/lineitems/score")
+@RequestMapping(AGS_LINEITEM_SCORE)
 @Slf4j
 @PreAuthorize("isAuthenticated()")
 public class AgsScoreController {

@@ -12,11 +12,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import static edu.uoc.elearn.lti.provider.controller.Paths.DEEPLINK;
+import static edu.uoc.elearn.lti.provider.controller.Paths.DEEPLINK_NEW;
+
 /**
  * @author Xavi Aracil <xaracil@uoc.edu>
  */
 @Controller
-@RequestMapping("/deeplink")
+@RequestMapping(DEEPLINK)
 @Slf4j
 @PreAuthorize("isAuthenticated()")
 @RequiredArgsConstructor
@@ -32,19 +35,19 @@ public class DeepLinkController {
 		return new ModelAndView(VIEW, MODEL_NAME, resolved);
 	}
 
-	@RequestMapping(value = "/new", params = {"add"})
+	@RequestMapping(value = DEEPLINK_NEW, params = {"add"})
 	public ModelAndView addItem(DeepLinkBean deepLinkBean, ToolProvider toolProvider) {
 		final Object resolved = deepLinkResolver.addItem(deepLinkBean, toolProvider);
 		return new ModelAndView(VIEW, MODEL_NAME, resolved);
 	}
 
-	@RequestMapping(value = "/new", params = {"remove"})
+	@RequestMapping(value = DEEPLINK_NEW, params = {"remove"})
 	public ModelAndView removeItem(DeepLinkBean deepLinkBean, @RequestParam(value = "remove") Integer index, ToolProvider toolProvider) {
 		final Object resolved = deepLinkResolver.removeItemAt(deepLinkBean, index, toolProvider);
 		return new ModelAndView(VIEW, MODEL_NAME, resolved);
 	}
 
-	@RequestMapping(value = "/new", params = {"save"})
+	@RequestMapping(value = DEEPLINK_NEW, params = {"save"})
 	public ModelAndView save(final DeepLinkBean deepLinkBean, ToolProvider toolProvider) {
 		final Object resolved = deepLinkResolver.save(deepLinkBean, toolProvider);
 		return new ModelAndView("deeplink/response", MODEL_NAME, resolved);

@@ -19,8 +19,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
+import static edu.uoc.elearn.lti.provider.controller.Paths.MAIN;
+
 @Controller
-@RequestMapping("/")
+@RequestMapping(MAIN)
 @Slf4j
 @PreAuthorize("isAuthenticated()")
 public class MainController {
