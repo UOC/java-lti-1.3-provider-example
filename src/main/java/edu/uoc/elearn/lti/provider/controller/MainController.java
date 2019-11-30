@@ -8,6 +8,7 @@ import edu.uoc.elc.spring.lti.tool.AgsServiceProvider;
 import edu.uoc.elc.spring.lti.tool.NamesRoleServiceProvider;
 import edu.uoc.elc.spring.lti.tool.ToolProvider;
 import edu.uoc.elearn.lti.provider.beans.IndexBean;
+import edu.uoc.elearn.lti.provider.service.LineItemVisitor;
 import edu.uoc.elearn.lti.provider.service.MemberVisitor;
 import edu.uoc.lti.ags.LineItem;
 import lombok.RequiredArgsConstructor;
@@ -28,6 +29,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MainController {
 	private final MemberVisitor memberVisitor;
+	private final LineItemVisitor lineItemVisitor;
 
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView init(User user, Context context, ToolProvider toolProvider) throws URISyntaxException {
@@ -39,19 +41,8 @@ public class MainController {
 		final List<String> roles = user.getRoles();
 		final Boolean hasNamesRoleService = memberVisitor.canGet();
 		final List<Member> members = memberVisitor.getAll();
-		final Boolean hasAgsService = hasAgsService(toolProvider);
-		final List<LineItem> lineItems = getLineItems(toolProvider);
+		final Boolean hasAgsService = lineItemVisitor.canGet();
+		final List<LineItem> lineItems = lineItemVisitor.getAll();
 		return new IndexBean(user, context, roles, hasNamesRoleService, members, hasAgsService, lineItems);
-	}
-
-	private Boolean hasAgsService(ToolProvider toolProvider) {
-		final AgsServiceProvider agsServiceProvider = toolProvider.getAgsServiceProvider();
-		return agsServiceProvider.hasAgsService();
-	}
-
-	private List<LineItem> getLineItems(ToolProvider toolProvider) {
-		final AgsServiceProvider agsServiceProvider = toolProvider.getAgsServiceProvider();
-		final ToolLineItemServiceClient lineItemsServiceClient = agsServiceProvider.getLineItemsServiceClient();
-		return lineItemsServiceClient.getLineItems(null, null, null, null);
 	}
 }
