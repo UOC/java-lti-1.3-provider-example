@@ -14,7 +14,7 @@
         </div>
     </div>
     <h2>Score</h2>
-    <form data-th-action="@{/ags/score(id=${object.lineItem.id})}" method="post">
+    <form data-th-action="@{/ags/lineitems/score(id=${object.lineItem.id})}" method="post">
         <div class="form-group">
             <label for="userId">User</label>
             <select id="userId" name="userId" class="form-item">

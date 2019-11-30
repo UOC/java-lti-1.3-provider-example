@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @author Xavi Aracil <xaracil@uoc.edu>
  */
 @Controller
-@RequestMapping("/ags/score")
+@RequestMapping("/ags/lineitems/score")
 @Slf4j
 @PreAuthorize("isAuthenticated()")
 public class AgsScoreController {
@@ -27,7 +27,7 @@ public class AgsScoreController {
 		if (!scored) {
 			throw new RuntimeException("Scored failed!!!");
 		}
-		return "redirect:/ags/view?id=" + id;
+		return "redirect:/ags/lineitems?id=" + id;
 	}
 
 	private Score createScoreObject(String userId, Double score, String comment) {

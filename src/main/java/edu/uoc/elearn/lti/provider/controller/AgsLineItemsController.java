@@ -1,8 +1,6 @@
 package edu.uoc.elearn.lti.provider.controller;
 
 import edu.uoc.elc.spring.lti.tool.ToolProvider;
-import edu.uoc.elearn.lti.provider.beans.AgsBean;
-import edu.uoc.elearn.lti.provider.beans.LineItemBean;
 import edu.uoc.elearn.lti.provider.service.AgsLineItemsResolver;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -10,7 +8,6 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -27,19 +24,13 @@ public class AgsLineItemsController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView list(ToolProvider toolProvider) {
-		AgsBean agsBean = agsLineItemsResolver.list(toolProvider, TAG);
-		return new ModelAndView("ags/index", "object", agsBean);
+		Object resolvedObject = agsLineItemsResolver.list(toolProvider, TAG);
+		return new ModelAndView("ags/index", "object", resolvedObject);
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
 	public String createLineItem(String label, Double maxScore, ToolProvider toolProvider) {
 		agsLineItemsResolver.createLineItem(label, maxScore, toolProvider, TAG);
 		return "redirect:/ags";
-	}
-
-	@RequestMapping(method = RequestMethod.GET, path = "/view")
-	public ModelAndView index(@RequestParam("id") String id, ToolProvider toolProvider) {
-		final LineItemBean lineItemBean = agsLineItemsResolver.get(id, toolProvider);
-		return new ModelAndView("ags/view", "object", lineItemBean);
 	}
 }
