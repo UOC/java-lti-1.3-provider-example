@@ -1,7 +1,7 @@
 package edu.uoc.elearn.lti.provider.config;
 
+import edu.uoc.elc.spring.lti.security.LTIApplicationSecurity;
 import edu.uoc.elc.spring.lti.tool.ToolDefinitionBean;
-import edu.uoc.elearn.lti.provider.security.UOCLTIApplicationSecurity;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
@@ -9,8 +9,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 
 @Configuration
 @Order(80)
-@ComponentScan(value = {"edu.uoc.elc.spring.lti.security"})
-public class ApplicationSecurity extends UOCLTIApplicationSecurity {
+@ComponentScan(value = {"edu.uoc.elc.spring.lti"})
+public class ApplicationSecurity extends LTIApplicationSecurity {
 	public ApplicationSecurity(ToolDefinitionBean toolDefinitionBean) {
 		super(toolDefinitionBean);
 	}

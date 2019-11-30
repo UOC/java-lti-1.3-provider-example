@@ -2,12 +2,12 @@ package edu.uoc.elearn.lti.provider.controller;
 
 import edu.uoc.elc.lti.platform.Member;
 import edu.uoc.elc.lti.platform.ags.ToolLineItemServiceClient;
+import edu.uoc.elc.spring.lti.security.Context;
+import edu.uoc.elc.spring.lti.security.User;
 import edu.uoc.elc.spring.lti.tool.AgsServiceProvider;
 import edu.uoc.elc.spring.lti.tool.NamesRoleServiceProvider;
 import edu.uoc.elc.spring.lti.tool.ToolProvider;
 import edu.uoc.elearn.lti.provider.beans.IndexBean;
-import edu.uoc.elearn.lti.provider.security.UOCContext;
-import edu.uoc.elearn.lti.provider.security.UOCUser;
 import edu.uoc.lti.ags.LineItem;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -26,12 +26,12 @@ import java.util.List;
 public class MainController {
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView init(UOCUser user, UOCContext context, ToolProvider toolProvider) throws URISyntaxException {
+	public ModelAndView init(User user, Context context, ToolProvider toolProvider) throws URISyntaxException {
 		final IndexBean response = generateResponseObject(user, context, toolProvider);
 		return new ModelAndView("index.html", "object", response);
 	}
 
-	private IndexBean generateResponseObject(UOCUser user, UOCContext context, ToolProvider toolProvider) throws URISyntaxException {
+	private IndexBean generateResponseObject(User user, Context context, ToolProvider toolProvider) throws URISyntaxException {
 		final List<String> roles = user.getRoles();
 		final Boolean hasNamesRoleService = hasNamesRoleService(toolProvider);
 		final List<Member> members = getMembers(toolProvider);
