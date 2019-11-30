@@ -1,7 +1,5 @@
 package edu.uoc.elearn.lti.provider.controller;
 
-import edu.uoc.elc.lti.platform.ags.ToolLineItemServiceClient;
-import edu.uoc.elc.spring.lti.tool.AgsServiceProvider;
 import edu.uoc.elc.spring.lti.tool.ToolProvider;
 import edu.uoc.elearn.lti.provider.beans.AgsBean;
 import edu.uoc.elearn.lti.provider.domain.LineItemFactory;
@@ -36,8 +34,7 @@ public class AgsController {
 	@RequestMapping(method = RequestMethod.POST)
 	public String createLineItem(String label, Double maxScore, ToolProvider toolProvider) {
 		final LineItem lineItem = createObject(label, maxScore);
-		final ToolLineItemServiceClient lineItemServiceClient = getLineItemServiceClient(toolProvider);
-		saveInPlatform(lineItem, lineItemServiceClient);
+		saveInPlatform(lineItem, toolProvider);
 		return "redirect:/ags";
 	}
 
@@ -51,14 +48,9 @@ public class AgsController {
 		return lineItemFactory.newLineItem(label, maxScore, TAG);
 	}
 
-	private ToolLineItemServiceClient getLineItemServiceClient(ToolProvider toolProvider) {
-		final AgsServiceProvider agsServiceProvider = toolProvider.getAgsServiceProvider();
-		return agsServiceProvider.getLineItemsServiceClient();
+	private LineItem saveInPlatform(LineItem lineItem, ToolProvider toolProvider) {
+		LineItemVisitor lineItemVisitor = new LineItemVisitor(toolProvider);
+		return lineItemVisitor.create(lineItem);
 	}
-
-	private LineItem saveInPlatform(LineItem lineItem, ToolLineItemServiceClient lineItemServiceClient) {
-		return lineItemServiceClient.createLineItem(lineItem);
-	}
-
 
 }
