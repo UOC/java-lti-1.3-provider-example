@@ -21,8 +21,12 @@ public class LineItemVisitor {
 	}
 
 	public List<LineItem> getAll() {
+		return getAll(null, null, null, null);
+	}
+
+	public List<LineItem> getAll(Integer limit, Integer page, String tag, String resourceId) {
 		final AgsServiceProvider agsServiceProvider = toolProvider.getAgsServiceProvider();
 		final ToolLineItemServiceClient lineItemsServiceClient = agsServiceProvider.getLineItemsServiceClient();
-		return lineItemsServiceClient.getLineItems(null, null, null, null);
+		return lineItemsServiceClient.getLineItems(limit, page, tag, resourceId);
 	}
 }
