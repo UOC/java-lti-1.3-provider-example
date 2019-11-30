@@ -11,6 +11,9 @@
                 <p><em>ID:</em><span data-th-text="${lineItem.id}"></span></p>
                 <p><em>Maximum score:</em><span data-th-text="${lineItem.scoreMaximum}"></span></p>
             </div>
+            <div class="card__footer">
+                <a data-th-href="@{/ags/view(id=${lineItem.id})}">More...<span aria-hidden="true" class="icon icon--external-link icon--small icon--after"></span></a>
+            </div>
         </div>
     </div>
     <h2>Create Line Items</h2>
