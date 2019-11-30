@@ -9,5 +9,5 @@ import java.util.List;
  */
 public interface MemberVisitor {
 	List<Member> getAll();
-	boolean hasMembers();
+	boolean canGet();
 }
