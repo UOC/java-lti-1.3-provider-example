@@ -21,7 +21,7 @@ import java.util.List;
  * @author Xavi Aracil <xaracil@uoc.edu>
  */
 @Service
-public class AgsRequestResolverImpl implements AgsRequestResolver {
+public class AgsResolverImpl implements AgsResolver {
 
 	@Override
 	public AgsBean list(ToolProvider toolProvider, String tag) {
