@@ -6,3 +6,6 @@ lti:
   client-id: imstester_3dfad6d
   deployment-id: testdeploy
 
+server:
+  servlet:
+    context-path: lti13-test
