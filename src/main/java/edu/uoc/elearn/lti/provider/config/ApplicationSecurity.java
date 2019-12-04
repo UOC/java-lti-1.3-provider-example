@@ -20,17 +20,6 @@ public class ApplicationSecurity extends LTIApplicationSecurity {
 		super.configure(http);
 
 		http
-						.formLogin()
-						.loginPage("/login").permitAll()
-						.failureUrl("/login?error").permitAll()
-
-						.and()
-
-						.logout()
-						.permitAll()
-
-						.and()
-
 						.servletApi()
 						.and()
 
