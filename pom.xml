@@ -41,6 +41,13 @@
         </snapshotRepository>
     </distributionManagement>
 
+    <scm>
+        <connection>scm:git:git@devel.elearnlab.org:elearn/SpringBootLTIProvider.git</connection>
+        <developerConnection>scm:git:git@devel.elearnlab.org:elearn/SpringBootLTIProvider.git</developerConnection>
+        <url>https://devel.elearnlab.org/elearn/SpringBootLTIProvider</url>
+        <tag>HEAD</tag>
+    </scm>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
