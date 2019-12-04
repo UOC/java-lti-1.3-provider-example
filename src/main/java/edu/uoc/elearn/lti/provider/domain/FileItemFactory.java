@@ -5,7 +5,7 @@ import edu.uoc.lti.deeplink.content.FileItem;
 import edu.uoc.lti.deeplink.content.Item;
 
 /**
- * @author Xavi Aracil <xaracil@uoc.edu>
+ * @author xaracil@uoc.edu
  */
 public class FileItemFactory implements ItemFactory {
 	@Override

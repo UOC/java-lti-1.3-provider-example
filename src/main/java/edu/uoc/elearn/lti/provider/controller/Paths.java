@@ -1,7 +1,7 @@
 package edu.uoc.elearn.lti.provider.controller;
 
 /**
- * @author Xavi Aracil <xaracil@uoc.edu>
+ * @author xaracil@uoc.edu
  */
 public class Paths {
 	public static final String MAIN = "/";

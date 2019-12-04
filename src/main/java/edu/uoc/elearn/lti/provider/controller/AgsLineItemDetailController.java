@@ -14,7 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import static edu.uoc.elearn.lti.provider.controller.Paths.AGS_LINEITEM;
 
 /**
- * @author Xavi Aracil <xaracil@uoc.edu>
+ * @author xaracil@uoc.edu
  */
 @Controller
 @RequestMapping(AGS_LINEITEM)

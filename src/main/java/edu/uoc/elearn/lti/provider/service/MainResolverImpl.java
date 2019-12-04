@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * @author Xavi Aracil <xaracil@uoc.edu>
+ * @author xaracil@uoc.edu
  */
 @Service
 public class MainResolverImpl implements MainResolver {

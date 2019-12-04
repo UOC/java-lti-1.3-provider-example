@@ -3,7 +3,7 @@ package edu.uoc.elearn.lti.provider.service;
 import edu.uoc.elc.spring.lti.tool.ToolProvider;
 
 /**
- * @author Xavi Aracil <xaracil@uoc.edu>
+ * @author xaracil@uoc.edu
  */
 public interface AgsLineItemsResolver {
 	Object list(ToolProvider toolProvider, String tag);

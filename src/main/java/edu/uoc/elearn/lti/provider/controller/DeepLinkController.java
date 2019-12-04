@@ -16,7 +16,7 @@ import static edu.uoc.elearn.lti.provider.controller.Paths.DEEPLINK;
 import static edu.uoc.elearn.lti.provider.controller.Paths.DEEPLINK_NEW;
 
 /**
- * @author Xavi Aracil <xaracil@uoc.edu>
+ * @author xaracil@uoc.edu
  */
 @Controller
 @RequestMapping(DEEPLINK)

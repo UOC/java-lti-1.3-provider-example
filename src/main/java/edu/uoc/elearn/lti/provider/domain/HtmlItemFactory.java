@@ -5,7 +5,7 @@ import edu.uoc.lti.deeplink.content.HtmlItem;
 import edu.uoc.lti.deeplink.content.Item;
 
 /**
- * @author Xavi Aracil <xaracil@uoc.edu>
+ * @author xaracil@uoc.edu
  */
 public class HtmlItemFactory implements ItemFactory {
 	@Override

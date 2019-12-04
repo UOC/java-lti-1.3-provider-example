@@ -3,7 +3,7 @@ package edu.uoc.elearn.lti.provider.beans;
 import lombok.Data;
 
 /**
- * @author Xavi Aracil <xaracil@uoc.edu>
+ * @author xaracil@uoc.edu
  */
 @Data
 public class DeepLinkForm {

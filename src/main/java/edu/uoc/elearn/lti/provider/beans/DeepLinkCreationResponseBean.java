@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 import java.net.URL;
 
 /**
- * @author Xavi Aracil <xaracil@uoc.edu>
+ * @author xaracil@uoc.edu
  */
 @RequiredArgsConstructor
 @Getter

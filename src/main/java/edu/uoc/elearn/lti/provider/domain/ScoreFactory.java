@@ -7,7 +7,7 @@ import edu.uoc.lti.ags.Score;
 import java.time.Instant;
 
 /**
- * @author Xavi Aracil <xaracil@uoc.edu>
+ * @author xaracil@uoc.edu
  */
 public class ScoreFactory {
 	public Score from(String userId, Double score, String comment) {

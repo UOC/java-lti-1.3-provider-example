@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import static edu.uoc.elearn.lti.provider.controller.Paths.AGS_LINEITEM_SCORE;
 
 /**
- * @author Xavi Aracil <xaracil@uoc.edu>
+ * @author xaracil@uoc.edu
  */
 @Controller
 @RequestMapping(AGS_LINEITEM_SCORE)

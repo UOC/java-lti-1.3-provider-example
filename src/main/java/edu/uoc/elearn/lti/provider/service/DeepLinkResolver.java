@@ -4,7 +4,7 @@ import edu.uoc.elc.spring.lti.tool.ToolProvider;
 import edu.uoc.elearn.lti.provider.beans.DeepLinkBean;
 
 /**
- * @author Xavi Aracil <xaracil@uoc.edu>
+ * @author xaracil@uoc.edu
  */
 public interface DeepLinkResolver {
 	Object getMainInfo(ToolProvider toolProvider);

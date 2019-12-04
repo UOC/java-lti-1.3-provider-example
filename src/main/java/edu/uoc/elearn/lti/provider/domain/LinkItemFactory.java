@@ -4,7 +4,7 @@ import edu.uoc.elearn.lti.provider.beans.DeepLinkForm;
 import edu.uoc.lti.deeplink.content.*;
 
 /**
- * @author Xavi Aracil <xaracil@uoc.edu>
+ * @author xaracil@uoc.edu
  */
 public class LinkItemFactory implements ItemFactory {
 
