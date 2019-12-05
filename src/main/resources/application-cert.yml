@@ -8,4 +8,4 @@ lti:
 
 server:
   servlet:
-    context-path: lti13-test
+    context-path: /lti13-test
