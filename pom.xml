@@ -22,31 +22,6 @@
         <java.version>1.8</java.version>
     </properties>
 
-    <repositories>
-        <repository>
-            <id>devel.elearnlab.org</id>
-            <url>https://devel.elearnlab.org/api/v4/groups/elearn/-/packages/maven</url>
-        </repository>
-    </repositories>
-
-    <distributionManagement>
-        <repository>
-            <id>devel.elearnlab.org</id>
-            <url>https://devel.elearnlab.org/api/v4/projects/152/packages/maven</url>
-        </repository>
-        <snapshotRepository>
-            <id>devel.elearnlab.org</id>
-            <url>https://devel.elearnlab.org/api/v4/projects/152/packages/maven</url>
-        </snapshotRepository>
-    </distributionManagement>
-
-    <scm>
-        <connection>scm:git:git@devel.elearnlab.org:elearn/SpringBootLTIProvider.git</connection>
-        <developerConnection>scm:git:git@devel.elearnlab.org:elearn/SpringBootLTIProvider.git</developerConnection>
-        <url>https://devel.elearnlab.org/elearn/SpringBootLTIProvider</url>
-        <tag>HEAD</tag>
-    </scm>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
