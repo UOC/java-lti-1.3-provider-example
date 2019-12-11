@@ -4,7 +4,7 @@
 
     <groupId>edu.uoc.elearn.lti</groupId>
     <artifactId>provider</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>0.0.2</version>
 
     <name>provider</name>
     <description>Spring Boot LTI Provider Project</description>
@@ -44,7 +44,7 @@
         <connection>scm:git:git@devel.elearnlab.org:elearn/SpringBootLTIProvider.git</connection>
         <developerConnection>scm:git:git@devel.elearnlab.org:elearn/SpringBootLTIProvider.git</developerConnection>
         <url>https://devel.elearnlab.org/elearn/SpringBootLTIProvider</url>
-        <tag>HEAD</tag>
+        <tag>provider-0.0.2</tag>
     </scm>
 
     <dependencies>
