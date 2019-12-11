@@ -4,7 +4,7 @@
 
     <groupId>edu.uoc.elearn.lti</groupId>
     <artifactId>provider</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>0.0.2</version>
 
     <name>provider</name>
     <description>Spring Boot LTI Provider Project</description>
