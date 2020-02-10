@@ -51,6 +51,6 @@ Then, install it using maven:
 Or run using:
 
 ```bash
-./mvnw springboot:run
+./mvnw spring-boot:run
 ```
 
