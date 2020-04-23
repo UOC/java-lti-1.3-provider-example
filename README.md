@@ -35,14 +35,9 @@ spring profile).
 
 ## Install
 
-You'll need to install the libraries:
+You'll need to set your maven installation to work with Github packages, following https://help.github.com/en/packages/using-github-packages-with-your-projects-ecosystem/configuring-apache-maven-for-use-with-github-packages#authenticating-to-github-packages
 
-* https://github.com/UOC/java-lti-1.3-core
-* https://github.com/UOC/java-lti-1.3-jwt
-* https://github.com/UOC/java-lti-1.3
-* https://github.com/UOC/spring-boot-lti-advantage
-
-Then, install it using maven:
+Once set, install it using maven:
       
 ```bash
 ./mvnw install
@@ -53,4 +48,10 @@ Or run using:
 ```bash
 ./mvnw spring-boot:run
 ```
+
+## See also
+* https://github.com/UOC/java-lti-1.3-core
+* https://github.com/UOC/java-lti-1.3-jwt
+* https://github.com/UOC/java-lti-1.3
+* https://github.com/UOC/spring-boot-lti-advantage
 
