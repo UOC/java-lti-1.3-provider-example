@@ -29,7 +29,7 @@ public class MemberVisitor {
 	private List<Member> getFromNameServiceProvider(NamesRoleServiceProvider namesRoleServiceProvider) {
 		try {
 			return namesRoleServiceProvider.getMembers();
-		} catch (URISyntaxException e) {
+		} catch (Throwable e) {
 			e.printStackTrace();
 		}
 		return Collections.EMPTY_LIST;
