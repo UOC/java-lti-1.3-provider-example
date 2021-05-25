@@ -43,7 +43,7 @@ You'll need to set your maven installation to work with Github packages, followi
         <repository>
           <id>github-uoc</id>
           <name>GitHub UOC Apache Maven Packages</name>
-          <url>https://maven.pkg.github.com/uoc</url>
+          <url>https://maven.pkg.github.com/uoc/*</url>
         </repository>				
   ```
 
