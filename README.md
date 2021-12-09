@@ -40,11 +40,26 @@ You'll need to set your maven installation to work with Github packages, followi
   Repository info:
   
   ```xml
-        <repository>
-          <id>github-uoc</id>
-          <name>GitHub UOC Apache Maven Packages</name>
-          <url>https://maven.pkg.github.com/uoc/*</url>
-        </repository>				
+      <repository>
+        <id>github-uoc-lti-core</id>
+        <name>GitHub UOC Apache Maven Packages</name>
+        <url>https://maven.pkg.github.com/uoc/java-lti-1.3-core</url>
+      </repository>				
+      <repository>
+        <id>github-uoc-lti-jwt</id>
+        <name>GitHub UOC Apache Maven Packages</name>
+        <url>https://maven.pkg.github.com/uoc/java-lti-1.3-jwt</url>
+      </repository>				
+      <repository>
+        <id>github-uoc-lti</id>
+        <name>GitHub UOC Apache Maven Packages</name>
+        <url>https://maven.pkg.github.com/uoc/java-lti-1.3</url>
+      </repository>				
+      <repository>
+        <id>github-uoc-lti-springboot</id>
+        <name>GitHub UOC Apache Maven Packages</name>
+        <url>https://maven.pkg.github.com/uoc/spring-boot-lti-advantage</url>
+      </repository>				
   ```
 
 Once set, install it using maven:
