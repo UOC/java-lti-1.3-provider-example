@@ -9,3 +9,5 @@ lti:
 server:
   servlet:
     context-path: /lti13-test
+  tomcat:
+    redirect-context-root: false
